@@ -19,9 +19,9 @@ The challenge is to create a front-end presentation for the [Star Wars API][swap
 
 ## Minimum Challenge Requirements
 We would like your submission to offer a minimum capability. The criteria are:
-- Provide a presentation that provides a list of the Star Wars people.
-- In this list, when the specific person is clicked, the person's name and gender are displayed.
-- Either a mobile application or a browser-based presentation shall be created. If choosing a browser-based presentation, it should render in Chrome, Safari and Firefox, with IE and Edge support at your discretion.
+- Provide a presentation that provides a list of the Star Wars people displaying their name.
+  - The list is paginated. Next and Previous buttons shall be implemented to update the displayed names.
+- Either a mobile application or a browser-based presentation shall be created. 
 
 ## Where to concentrate your effort
 In a UX/UI presentation, there are many areas that could be addressed. While implementing the minimum requirements, please feel to implement one or more items in these areas. Please do not feel limited to these areas if you would like to add your take on front-end development.
