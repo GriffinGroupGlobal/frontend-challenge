@@ -17,6 +17,8 @@ The challenge is to create a front-end presentation for the [Star Wars API][swap
 - [Films](https://swapi.co/api/films/)
 - [Species](https://swapi.co/api/species/)
 
+Ideally, this would take a mid-level developer up to two hours to complete the minimum requirements.
+
 ## Minimum Challenge Requirements
 We would like your submission to offer a minimum capability. The criteria are:
 - Provide a presentation that provides a list of the Star Wars people displaying their name.
