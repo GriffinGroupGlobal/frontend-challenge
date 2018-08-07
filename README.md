@@ -26,9 +26,13 @@ We would like your submission to offer a minimum capability. The criteria are:
 - Either a mobile application or a browser-based presentation shall be created. 
 
 ## Where to concentrate your effort
-In a UX/UI presentation, there are many areas that could be addressed. While implementing the minimum requirements, please feel to implement one or more items in these areas. Please do not feel limited to these areas if you would like to add your take on front-end development.
+In a UX/UI presentation, there are many areas that could be addressed. Working software is always top priority, however, so meet the minimum requirements. Should you want to go above and beyond the minimum requirements, please feel free to add to your submittal either via code or via documentation in [common mark][commonmark] compliant documentation.
 
 - Providing more information about the Star Wars universe by following some of the extra links in the JSON data model
+- If implementing in swift, some items to consider that we would like to see
+  - Use TableView and or CollectionView
+  - implement delegate methods of one of the above classes
+  - implement a custom user interaction
 - Error handling
 - Debug statements
 - [TDD]
