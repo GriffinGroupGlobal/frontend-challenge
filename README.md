@@ -1,76 +1,195 @@
-# Griffin Group Global Front End Development Challenge
+# EstateSpace Front End Development Challenge (Senior React)
 
-Hi! Thank you for your interest in [Griffin Group Global][g3website]. Our evaluation process begins with an open-ended coding challenge that we will discuss during your interview. There is not one correct way to approach this challenge. Rather, we would like to see your approach and your creativity in solving the problem.
+Hi! Thank you for your interest in **EstateSpace**.  
+Our evaluation process begins with an open-ended coding challenge that we will discuss during your interview. There is not one correct way to approach this challenge. Instead, we want to understand your **technical judgment**, **architecture decisions**, and how you reason about trade-offs.
 
-We appreciate that any coding challenge represents an investment of your time. We hope you see the value in having a code sample that is relatable to both of us for the interview. Should you be unsuccessful, you should feel free to use the code you developed for this challenge in any way that you would like.
+We appreciate that any coding challenge represents an investment of your time. Please aim to keep the scope reasonable and focus on strong fundamentals rather than completeness. If you are unsuccessful, you are free to reuse the code you developed for this challenge in any way you like.
 
-If you are successful, then we will set up an in-person interview and use this code as the starting point in our conversation.
+If you are successful, we will schedule a follow-up interview and use this code as the starting point for a deeper technical discussion.
 
-# The Challenge
-Griffin Group Global creates REST-based microservices that are presented in a variety of ways. We use iOS native Swift, Android-based Java and JavaScript-based frameworks such as React for creating responsive web-based presentations.
+---
 
-The challenge is to create a front-end presentation for the [Star Wars API][swapi]. The idea is for you to have fun and be creative with your presentations. The Star Wars API has a standard RESTful interface for types of data pertaining to the Star Wars universe. These include:
-- [Planets](https://swapi.co/api/planets/)
-- [Spaceships](https://swapi.co/api/starships/)
-- [Vehicles](https://swapi.co/api/vehicles/)
-- [People](https://swapi.co/api/people/)
-- [Films](https://swapi.co/api/films/)
-- [Species](https://swapi.co/api/species/)
+## The Challenge
 
-Ideally, this would take a mid-level developer up to two hours to complete the minimum requirements.
+EstateSpace builds product experiences that consume REST-based services and present data across web and mobile clients. We value clarity in state management, resilience, performance awareness, and maintainable code.
+
+Your task is to build a **Movie Explorer** using the **OMDb API**.
+
+You may implement this as:
+
+- A browser-based application using **React** (Vite or similar), OR
+- A **Next.js** application
+
+You can use any styling approach you prefer. Tailwind (or a Tailwind-based solution) is a plus
+**TypeScript is a plus and strongly recommended.**
+
+**Time expectation:** ~2–4 hours.
+
+---
+
+## OMDb API
+
+Official documentation:  
+https://www.omdbapi.com/
+
+You will need a **free OMDb API key**.
+
+### Common Endpoints
+
+https://www.omdbapi.com/?apikey=API_KEY&s=avatar&page=1
+
+**Movie details by IMDb ID:**
+
+https://www.omdbapi.com/?apikey=API_KEY&i=tt0372784
+
+Notes:
+
+- Pagination is handled via the `page` parameter.
+- Some fields may return `"N/A"` (for example, posters). Handle this gracefully.
+- The poster URLs returned in the JSON response can be used directly.
+
+---
 
 ## Minimum Challenge Requirements
-We would like your submission to offer a minimum capability. The criteria are:
-- Provide a presentation that provides a list of the Star Wars people displaying their name.
-  - The list is paginated. Next and Previous buttons shall be implemented to update the displayed names.
-- Either a mobile application or a browser-based presentation shall be created. 
 
-## Where to concentrate your effort
-In a UX/UI presentation, there are many areas that could be addressed. Working software is always top priority, however, so meet the minimum requirements. Should you want to go above and beyond the minimum requirements, please feel free to add to your submittal either via code or via documentation in [common mark][commonmark] compliant documentation.
+### 1. Search & Results List
 
-- Providing more information about the Star Wars universe by following some of the extra links in the JSON data model
-- If implementing in swift, some items to consider that we would like to see
-  - Use TableView and or CollectionView
-  - implement delegate methods of one of the above classes
-  - implement a custom user interaction
-- Error handling
-- Debug statements
-- [TDD]
-- Encrypted communications
-- Caching
-- UX, reducing the amount of input from the user
-- Responsive presentation, determining the screen size and autoscaling the display
+- A search input to query movies by title.
+- Display a list showing at least:
+  - Title
+  - Year
+  - Poster
+- Include explicit states for:
+  - Loading
+  - Error
+  - Empty results
 
-# Prerequisites
-- A basic understanding of source code control, [git][git-scm] is required.
-- You must make your code available via a [GitHub][github] account.
-- All JavaScript shall be written using [ES6][ES6] standards.
+### 2. Pagination
 
-# Getting Started
-1. Fork this [repository][repository].
-1. Clone the fork to your personal machine.
-1. Start coding.
-1. Commit changes to your fork as you see fit.
+- Implement pagination using OMDb's `page` parameter.
+- Provide **Next** and **Previous** controls.
+- Pagination must be **URL-driven**:
+  - Example: `?q=batman&page=2`
+  - Refreshing or sharing the URL should preserve state.
 
-# Submission
+### 3. Movie Details
 
-When you are comfortable with your results, please email your fork to
-[g3-dev@griffingroupglobal.com](mailto:g3-dev@griffingroupglobal.com). Please keep your emails short and to the point.
+- Clicking a movie opens a details view (route or modal).
+- Fetch movie details
+- Display at least:
+  - Title
+  - Plot
+  - Genre
+  - Runtime
+  - Ratings
 
-Any specific notes or further information you would like to add about your submittal, should be included in the GitHub project, as additional [Common Mark][commonmark] notes.
+### 4. Caching (observable)
 
-Do not feel as though you must create a public fork of this repository. You are free to create a throwaway GitHub account or private fork. In those cases, please let us know so that we may send you the GitHub IDs to add to the repository.
+Implement a caching strategy such that:
 
-# Evaluations
+- Navigating back to a previously visited search page does **not** cause a full reload experience.
+- Previously visited movie details should not always refetch immediately.
+- You may use Tanstack Query, SWR, or a custom approach—document your choice.
 
-We realize there are many items to look at when creating a user interface. Please do not feel like like you have to do everything. Please feel free to use any front-end language you wish. Use your strengths to your advantage. If you gravitate more towards design, provide a more visually appealing interface. If you gravitate more towards data consumption, provide more capability by using the API routes. Give us a heads up by documenting your code to let us know where and why you concentrated on certain items.
+---
 
-As you develop your solution, you may have ideas on other avenues to pursue. Please feel free to include them inline as documented source or as additional [Common Mark][commonmark] compliant notes in your fork.
+## Where to Concentrate Your Effort (Senior-Level Focus)
+
+After meeting the minimum requirements, choose **2–3** of the following areas to explore further:
+
+### A. State Management
+
+- Clear separation of:
+  - UI state
+  - Server state
+  - Local vs shared state
+  - Performance optimizations
+- Explain your decisions and trade-offs.
+
+### B. Search UX Improvements
+
+Examples:
+
+- Debounced search or search-on-enter
+- Clear/reset button
+- Prevent stale results when typing quickly
+- Recent searches persisted locally
+- Keyboard-friendly interactions
+
+### C. Resilience & Edge Cases
+
+Examples:
+
+- Graceful handling of missing data
+- Avoiding stale or flashing results
+- Error boundaries or fallback UI
+- Canceling or ignoring in-flight requests
+
+### D. Performance Considerations
+
+Examples:
+
+- Avoid unnecessary re-renders
+- Prefetching next pages
+- Reasonable memoization
+- Efficient list rendering
+
+### E. Testing (light but meaningful)
+
+Add at least one:
+
+- Unit test for a pure function
+- Component or integration test for search/pagination or loading/error states
+
+---
+
+## Prerequisites
+
+- Basic understanding of source control (Git).
+- All JavaScript should follow modern ES standards.
+- TypeScript is encouraged.
+
+---
+
+## Getting Started
+
+1. Fork this repository.
+2. Clone the fork to your personal machine.
+3. Start coding.
+4. Commit changes to your fork as you see fit.
+
+---
+
+## Submission
+
+When you are comfortable with your results, please email your fork to the appropriate EstateSpace contact.  
+Please keep your email short and to the point.
+
+Any specific notes, trade-offs, or further information you would like to add should be included in the GitHub project as **CommonMark-compliant documentation**.
+
+Do not feel that you must create a public fork of this repository. You are free to use a private fork or a throwaway GitHub account. If you do so, please let us know so we can provide the GitHub IDs to grant access.
+
+---
+
+## Evaluation Criteria
+
+We will evaluate:
+
+- Correctness and completeness of the minimum requirements
+- Code readability and structure
+- State management and data-fetching decisions
+- Caching strategy and resilience
+- Performance awareness
+- Pragmatic testing approach
+- Clarity of communication in documentation
+
+We realize there are many items to look at when creating a user interface. Please do not feel like like you have to do everything. Please feel free to use any UI/CSS library you wish. Use your strengths to your advantage. If you gravitate more towards design, provide a more visually appealing interface. If you gravitate more towards data consumption, provide more capability by using the API routes. Give us a heads up by documenting your code to let us know where and why you concentrated on certain items.
+
+As you develop your solution, you may have ideas on other avenues to pursue. Please feel free to include them inline as documented source or as additional Common Mark compliant notes in your fork.
 
 We look for creativity, originality, and a good user experience in your application if that's an area you focused on.
 
 We look for readability, good architectural decisions, modularity, and a solid approach to testing in your code.
-
 # License
 This project is [MIT licensed][mitlicense].
 
